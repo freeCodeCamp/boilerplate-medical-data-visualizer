@@ -20,7 +20,10 @@ df['gluc'] = [0 if x == 1 else 1 for x in df['gluc']]
 
 def draw_cat_plot():
     # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
-    df_cat = None
+    values = ['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight']
+    df_val = df[values]
+    df_cat = df_val.melt(
+        value_var=values, var_name='variable', value_name='values')
 
     # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the collumns for the catplot to work correctly.
     df_cat = None
