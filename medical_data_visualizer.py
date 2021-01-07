@@ -30,6 +30,8 @@ def draw_cat_plot():
 
     # Draw the catplot with 'sns.catplot()'
 
+    sns.catplot(x='variable', hue='values', data=df_cat, kind='count')
+
     # Do not modify the next two lines
     fig.savefig('catplot.png')
     return fig
