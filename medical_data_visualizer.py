@@ -29,13 +29,15 @@ def draw_cat_plot():
     c0 = df[df['cardio'] == 0][values]
     c1 = df[df['cardio'] == 1][values]
 
-    c0_melt = c0.melt(value_vars=values, var_name='variable', value_name='values')
-    c1_melt = c1.melt(value_vars=values, var_name='variable', value_name='values')
+    c0_melt = c0.melt(value_vars=values, var_name='variable',
+                      value_name='values')
+    c1_melt = c1.melt(value_vars=values, var_name='variable',
+                      value_name='values')
 
-    df_cat = None
+    #df_cat = None
 
     # Draw the catplot with 'sns.catplot()'
-    fig, ax = plt.subplots(1,2)
+    fig, ax = plt.subplots(1, 2)
     ax[0] = sns.catplot(x='variable', hue='values', data=c0_melt, kind='count')
     ax[1] = sns.catplot(x='variable', hue='values', data=c1_melt, kind='count')
 
