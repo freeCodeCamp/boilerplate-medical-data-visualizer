@@ -26,11 +26,18 @@ def draw_cat_plot():
         value_var=values, var_name='variable', value_name='values')
 
     # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the collumns for the catplot to work correctly.
+    c0 = df[df['cardio'] == 0][values]
+    c1 = df[df['cardio'] == 1][values]
+
+    c0_melt = c0.melt(value_vars=values, var_name='variable', value_name='values')
+    c1_melt = c1.melt(value_vars=values, var_name='variable', value_name='values')
+
     df_cat = None
 
     # Draw the catplot with 'sns.catplot()'
-
-    sns.catplot(x='variable', hue='values', data=df_cat, kind='count')
+    fig, ax = plt.subplots(1,2)
+    ax[0] = sns.catplot(x='variable', hue='values', data=c0_melt, kind='count')
+    ax[1] = sns.catplot(x='variable', hue='values', data=c1_melt, kind='count')
 
     # Do not modify the next two lines
     fig.savefig('catplot.png')
