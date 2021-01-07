@@ -12,8 +12,11 @@ df['overweight'] = [
 
 # Normalize data by making 0 always good and 1 always bad. If the value of 'cholestorol' or 'gluc' is 1, make the value 0. If the value is more than 1, make the value 1.
 
+df['cholesterol'] = [0 if x == 1 else 1 for x in df['cholesterol']]
 
 # Draw Categorical Plot
+
+
 def draw_cat_plot():
     # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
     df_cat = None
