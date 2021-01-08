@@ -49,6 +49,12 @@ def draw_cat_plot():
 # Draw Heat Map
 def draw_heat_map():
     # Clean the data
+    df = df[df['ap_lo'] <= df['ap_hi']]
+    df = df[df['height'] >= df['height'].quantile(0.025)]
+    df = df[df['height'] <= df['height'].quantile(0.975)]
+    df = df[df['weight'] >= df['weight'].quantile(0.025)]
+    df = df[df['weight'] <= df['weight'].quantile(0.975)]
+
     df_heat = None
 
     # Calculate the correlation matrix
