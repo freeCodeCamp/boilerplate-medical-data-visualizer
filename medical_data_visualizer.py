@@ -58,15 +58,16 @@ def draw_heat_map():
     df_heat = None
 
     # Calculate the correlation matrix
-    corr = None
+    corr = df.corr()
 
     # Generate a mask for the upper triangle
-    mask = None
+    mask = np.triu(np.ones_like(corr, dtype=bool))
 
     # Set up the matplotlib figure
-    fig, ax = None
+    fig, ax = plt.subplots(figsize=(16, 12))
 
     # Draw the heatmap with 'sns.heatmap()'
+    sns.heatmap(corr, mask=mask, annot=True, fmt='.1g')
 
     # Do not modify the next two lines
     fig.savefig('heatmap.png')
