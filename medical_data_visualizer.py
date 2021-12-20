@@ -11,6 +11,7 @@ df = pd.read_csv('./medical_examination.csv')
 df['bmi']=((df.weight)/((df.height/100)**2)).round(0) # se agrega el campo y se calcula el valor de bmi
 
 # se agrega el campo y se calcula el valor sobrepeso
+
 # https://www.delftstack.com/es/howto/python-pandas/pandas-apply-multiple-columns/
 def calc_overw(a): #def calc_overw(a):
     if a[13] > 25: # a
