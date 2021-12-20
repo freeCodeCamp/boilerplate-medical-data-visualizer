@@ -27,7 +27,6 @@ class CatPlotTestCase(unittest.TestCase):
         expected = 13
         self.assertEqual(actual, expected, "Expected a different number of bars chart.")
 
-
 class HeatMapTestCase(unittest.TestCase):
     def setUp(self):
         self.fig = medical_data_visualizer.draw_heat_map()
