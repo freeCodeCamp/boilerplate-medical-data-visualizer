@@ -13,7 +13,7 @@ File name: medical_examination.csv
 | Age | Objective Feature | age | int (days) |
 | Height | Objective Feature | height | int (cm) |
 | Weight | Objective Feature | weight | float (kg) |
-| Gender | Objective Feature | gender | categorical code |
+| Sex | Objective Feature | sex | categorical code |
 | Systolic blood pressure | Examination Feature | ap_hi | int |
 | Diastolic blood pressure | Examination Feature | ap_lo | int |
 | Cholesterol | Examination Feature | cholesterol | 1: normal, 2: above normal, 3: well above normal |
