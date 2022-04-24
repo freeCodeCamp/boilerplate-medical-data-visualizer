@@ -1,4 +1,4 @@
-id,age,gender,height,weight,ap_hi,ap_lo,cholesterol,gluc,smoke,alco,active,cardio
+id,age,sex,height,weight,ap_hi,ap_lo,cholesterol,gluc,smoke,alco,active,cardio
 0,18393,2,168,62.0,110,80,1,1,0,0,1,0
 1,20228,1,156,85.0,140,90,3,1,0,0,1,1
 2,18857,1,165,64.0,130,70,3,1,0,0,0,1
