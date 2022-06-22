@@ -23,6 +23,10 @@ def draw_cat_plot():
     
 
     # Draw the catplot with 'sns.catplot()'
+
+
+
+    # Get the figure for the output
     fig = None
 
 
