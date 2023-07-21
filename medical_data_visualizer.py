@@ -6,13 +6,13 @@ import numpy as np
 # Import data
 df = None
 
-# Add 'overweight' column
+# 1
 df['overweight'] = None
 
-# Normalize data by making 0 always good and 1 always bad. If the value of 'cholesterol' or 'gluc' is 1, make the value 0. If the value is more than 1, make the value 1.
+# 2
 
 
-# Draw Categorical Plot
+# 3
 def draw_cat_plot():
     # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
     df_cat = None
@@ -35,9 +35,9 @@ def draw_cat_plot():
     return fig
 
 
-# Draw Heat Map
+# 4
 def draw_heat_map():
-    # Clean the data
+    # 4.1 - 4.5
     df_heat = None
 
     # Calculate the correlation matrix
@@ -51,7 +51,7 @@ def draw_heat_map():
     # Set up the matplotlib figure
     fig, ax = None
 
-    # Draw the heatmap with 'sns.heatmap()'
+    # 5
 
 
 
