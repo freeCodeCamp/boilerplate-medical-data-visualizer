@@ -3,58 +3,58 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Import data
+# 1
 df = None
 
-# Add 'overweight' column
+# 2
 df['overweight'] = None
 
-# Normalize data by making 0 always good and 1 always bad. If the value of 'cholesterol' or 'gluc' is 1, make the value 0. If the value is more than 1, make the value 1.
+# 3
 
 
-# Draw Categorical Plot
+# 4
 def draw_cat_plot():
-    # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
+    # 5
     df_cat = None
 
 
-    # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the columns for the catplot to work correctly.
+    # 6
     df_cat = None
     
 
-    # Draw the catplot with 'sns.catplot()'
+    # 7
 
 
 
-    # Get the figure for the output
+    # 8
     fig = None
 
 
-    # Do not modify the next two lines
+    # 9
     fig.savefig('catplot.png')
     return fig
 
 
-# Draw Heat Map
+# 10
 def draw_heat_map():
-    # Clean the data
+    # 11
     df_heat = None
 
-    # Calculate the correlation matrix
+    # 12
     corr = None
 
-    # Generate a mask for the upper triangle
+    # 13
     mask = None
 
 
 
-    # Set up the matplotlib figure
+    # 14
     fig, ax = None
 
-    # Draw the heatmap with 'sns.heatmap()'
+    # 15
 
 
 
-    # Do not modify the next two lines
+    # 16
     fig.savefig('heatmap.png')
     return fig
