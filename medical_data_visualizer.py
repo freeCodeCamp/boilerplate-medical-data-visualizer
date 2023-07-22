@@ -3,58 +3,58 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Import data
+# 1
 df = None
 
-# 1
+# 2
 df['overweight'] = None
 
-# 2
-
-
 # 3
+
+
+# 4
 def draw_cat_plot():
-    # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
+    # 5
     df_cat = None
 
 
-    # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the columns for the catplot to work correctly.
+    # 6
     df_cat = None
     
 
-    # Draw the catplot with 'sns.catplot()'
+    # 7
 
 
 
-    # Get the figure for the output
+    # 8
     fig = None
 
 
-    # Do not modify the next two lines
+    # 9
     fig.savefig('catplot.png')
     return fig
 
 
-# 4
+# 10
 def draw_heat_map():
-    # 4.1 - 4.5
+    # 11
     df_heat = None
 
-    # Calculate the correlation matrix
+    # 12
     corr = None
 
-    # Generate a mask for the upper triangle
+    # 13
     mask = None
 
 
 
-    # Set up the matplotlib figure
+    # 14
     fig, ax = None
 
-    # 5
+    # 15
 
 
 
-    # Do not modify the next two lines
+    # 16
     fig.savefig('heatmap.png')
     return fig
