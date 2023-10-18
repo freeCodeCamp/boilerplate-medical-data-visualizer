@@ -10,21 +10,21 @@ class CatPlotTestCase(unittest.TestCase):
         self.ax = self.fig.axes[0]
     
     def test_line_plot_labels(self):
-        actual = self.ax.get_xlabel()
+        actual = self.ax[0].get_xlabel()
         expected = "variable"
         self.assertEqual(actual, expected, "Expected line plot xlabel to be 'variable'")
-        actual = self.ax.get_ylabel()
+        actual = self.ax[0].get_ylabel()
         expected = "total"
         self.assertEqual(actual, expected, "Expected line plot ylabel to be 'total'")
         actual = []
-        for label in self.ax.get_xaxis().get_majorticklabels():
+        for label in self.ax[0].get_xaxis().get_majorticklabels():
             actual.append(label.get_text())
         expected = ['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke']
         self.assertEqual(actual, expected, "Expected bar plot secondary x labels to be 'active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'")
 
     def test_bar_plot_number_of_bars(self):
-        actual = len([rect for rect in self.ax.get_children() if isinstance(rect, mpl.patches.Rectangle)])
-        expected = 13
+        actual = len(self.ax[0].patches)
+        expected = 12
         self.assertEqual(actual, expected, "Expected a different number of bars chart.")
 
 
