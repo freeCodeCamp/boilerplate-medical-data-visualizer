@@ -23,8 +23,8 @@ class CatPlotTestCase(unittest.TestCase):
         self.assertEqual(actual, expected, "Expected bar plot secondary x labels to be 'active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'")
 
     def test_bar_plot_number_of_bars(self):
-        actual = len(self.ax[0].patches)
-        expected = 12
+        actual = len([rect for rect in self.ax[0].get_children() if isinstance(rect, mpl.patches.Rectangle)])
+        expected = 13
         self.assertEqual(actual, expected, "Expected a different number of bars chart.")
 
 
