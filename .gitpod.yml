@@ -2,7 +2,7 @@ image: gitpod/workspace-python-3.8
 
 tasks:
   - init: pip install -r requirements.txt
-    command: python test_module.py
+    command: python main.py
 
 vscode:
   extensions:
