@@ -1,0 +1,9 @@
+image: gitpod/workspace-python-3.8
+
+tasks:
+  - init: pip install -r requirements.txt
+    command: python test_module.py
+
+vscode:
+  extensions:
+    - https://github.com/freeCodeCamp/freecodecamp-dark-vscode-theme/releases/download/v1.0.0/freecodecamp-dark-vscode-theme-1.0.0.vsix
