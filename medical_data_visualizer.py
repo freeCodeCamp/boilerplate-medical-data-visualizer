@@ -31,12 +31,13 @@ for ind, row in df.iterrows():
     else:
         df.loc[ind, "gluc"] = 1
 
-ht_df =df
+ht_df = df
 
 # Draw Categorical Plot
 def draw_cat_plot():
     # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
-    df_cat = pd.melt(df, id_vars=['id', 'active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'], value_vars= ['cardio'])
+    df_cat = df[['id','active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke','cardio']]
+    df_cat = pd.melt(df_cat, id_vars=['id', 'active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'], value_vars= ['cardio'])
 
 
     # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the columns for the catplot to work correctly.
@@ -44,25 +45,24 @@ def draw_cat_plot():
     g = df_cat.groupby(['value'])
 
     t_v = g.get_group(0)
-    t_v.count() # cardio, value =0 
+    t_v.value.count() # cardio, value =0 
     t_v1 = g.get_group(1)
-    t_v1.count() # cardio, value =1
+    t_v1.value.count() # cardio, value =1
 
     df_catm = df_cat[['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke','value']]
-    df_catm = df_cat.melt(id_vars='value', var_name = 'variable', value_name = 'Total')
+    df_catm = df_catm.melt(id_vars='value', var_name = 'variable', value_name = 'total')
     df_cat = df_catm.rename(columns={'value':'cardio'})
     
 
     
     # Draw the catplot with 'sns.catplot()'
-    
-    ax = sns.catplot(x= 'variable', y = 'Total', data = df_cat, estimator = len, kind = 'bar',hue = 'Total', col='cardio', legend = False)
+    fig, ax = plt.subplots(figsize = (10,10))
+    ax = sns.catplot(x= 'variable', y = 'total', data = df_cat, estimator = len, kind = 'bar',hue = 'total', col='cardio', legend = False)
     plt.legend(title= 'value', bbox_to_anchor=(1.15, .55))
-    plt.show(ax)
 
 
     # Get the figure for the output
-    fig = ax
+    fig = ax.fig
 
 
     # Do not modify the next two lines
@@ -78,7 +78,7 @@ def draw_heat_map():
     df_heat = df_heat[(df_heat['weight'] >= df_heat['weight'].quantile(0.025)) & (df_heat['height']<= df_heat['height'].quantile(0.975))]
 
     # Calculate the correlation matrix
-    corr = df_heat.corr().round(2)
+    corr = df_heat.corr().round(1)
 
     # Generate a mask for the upper triangle
     mask = np.triu(np.ones_like(corr, dtype=bool))
@@ -96,3 +96,4 @@ def draw_heat_map():
     # Do not modify the next two lines
     fig.savefig('heatmap.png')
     return fig
+
