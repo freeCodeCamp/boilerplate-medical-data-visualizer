@@ -90,7 +90,7 @@ def draw_heat_map():
 
     # Draw the heatmap with 'sns.heatmap()'
 
-    sns.heatmap(corr, annot = True, Vmax =1, vmin= 0, mask = mask, ax= ax)
+    sns.heatmap(corr, annot = True, vmax =1, vmin= 0, mask = mask, ax= ax)
 
 
     # Do not modify the next two lines
