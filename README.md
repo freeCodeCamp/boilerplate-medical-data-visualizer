@@ -4,3 +4,7 @@ This is my forked version of the *Medical Data Visualizer* project, which is par
 
 Project Instructions:
 [https://www.freecodecamp.org/learn/data-analysis-with-python/data-analysis-with-python-projects/medical-data-visualizer](https://www.freecodecamp.org/learn/data-analysis-with-python/data-analysis-with-python-projects/medical-data-visualizer)
+
+Project Replit Link:
+[https://replit.com/@Alanwatts42/boilerplate-medical-data-visualizer](https://replit.com/@Alanwatts42/boilerplate-medical-data-visualizer)
+
