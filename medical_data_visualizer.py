@@ -6,38 +6,29 @@ import numpy as np
 df = pd.read_csv('medical_examination.csv')
 
 # 2
-# Convert height from cm to meters
-df['height'] = df['height'] / 100
-
-# Calculate BMI
-df['BMI'] = df['weight'] / (df['height'] ** 2)
-
-# Determine overweight status
-df['overweight'] = (df['BMI'] > 25).astype(int)
-df = df.drop(columns=['BMI'])
-# 3
 df['cholesterol'] = df['cholesterol'].apply(lambda x: 0 if x == 1 else 1)
 df['gluc'] = df['gluc'].apply(lambda x: 0 if x == 1 else 1)
+
+# Añadir la columna overweight
+df['overweight'] = df.apply(lambda x: 1 if x['weight'] / (x['height'] / 100) ** 2 > 25 else 0, axis=1)
 
 # 4
 def draw_cat_plot():
     # Crear DataFrame en formato largo
-    df_cat = pd.melt(df, id_vars=['id', 'cardio'], value_vars=['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'], var_name='variable', value_name='value')
-    
+    df_cat = pd.melt(df, id_vars=['id', 'cardio'], value_vars=['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'], 
+                    var_name='variable', value_name='value')
+
+    # Agrupar y contar los valores
+    df_cat_counts = df_cat.groupby(['cardio', 'variable', 'value']).size().reset_index(name='total')
+
     # Crear el gráfico categórico
-    cat_plot = sns.catplot(data=df_cat, x='value', col='cardio', hue='variable', kind='count', height=4, aspect=1)
+    g = sns.catplot(data=df_cat_counts, x='variable', y='total', col='cardio', hue='value', kind='bar', height=4, aspect=1)
 
+    # Obtener la figura desde el objeto catplot
+    fig = g.fig
 
-    # 6
-    df_cat = None
-    
-
-    # 7
-
-
-
-    # 8
-    fig = None
+    # Mostrar el gráfico
+    plt.show()
 
 
     # 9
@@ -47,23 +38,29 @@ def draw_cat_plot():
 
 # 10
 def draw_heat_map():
-    # 11
-    df_heat = None
+    # Limpiar los datos
+    df_heat = df[
+        (df['ap_hi'] >= df['ap_lo']) & 
+        (df['height'] >= df['height'].quantile(0.025)) & 
+        (df['height'] <= df['height'].quantile(0.975)) & 
+        (df['weight'] >= df['weight'].quantile(0.025)) & 
+        (df['weight'] <= df['weight'].quantile(0.975))
+    ]
 
-    # 12
-    corr = None
+    # Calcular la matriz de correlación
+    corr = df_heat.corr()
 
-    # 13
-    mask = None
+    # Generar una máscara para el triángulo superior
+    mask = np.triu(np.ones_like(corr, dtype=bool))
 
+    # Configurar la figura de matplotlib
+    fig, ax = plt.subplots(figsize=(12, 10))
 
+    # Graficar la matriz de correlación usando sns.heatmap()
+    sns.heatmap(corr, mask=mask, annot=True, fmt=".1f", linewidths=.5, ax=ax, cbar_kws={"shrink": .5})
 
-    # 14
-    fig, ax = None
-
-    # 15
-
-
+    # Mostrar el gráfico
+    plt.show()
 
     # 16
     fig.savefig('heatmap.png')
