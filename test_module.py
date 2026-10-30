@@ -7,7 +7,7 @@ import matplotlib as mpl
 class CatPlotTestCase(unittest.TestCase):
     def setUp(self):
         self.fig = medical_data_visualizer.draw_cat_plot()
-        self.ax = self.fig.axes[0]
+        self.ax = self.fig.axes.flatten()[0]
     
     def test_line_plot_labels(self):
         actual = self.ax.get_xlabel()
